@@ -29,7 +29,7 @@ export default function About() {
             <h2 className="text-2xl font-bold mb-6">My Story</h2>
             <div className="space-y-4 text-gray-600">
               <p>
-                Hello! I'm John, a passionate developer with a love for creating elegant solutions to complex problems.
+                Hello! I'm Tarush, a passionate developer with a love for creating elegant solutions to complex problems.
                 My journey in technology began when I was in high school, tinkering with HTML and CSS to build simple
                 websites.
               </p>
