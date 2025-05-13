@@ -169,7 +169,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Section */}
+      {/* Featured Projects Section 
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -231,7 +231,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
