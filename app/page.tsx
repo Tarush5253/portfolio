@@ -1,19 +1,70 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, GitlabIcon as GitHub, Linkedin } from "lucide-react"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ExternalLink, Github, GitlabIcon as GitHub, Linkedin } from "lucide-react";
 
-import SkillsVisualization from "@/components/skills-visualization"
-import Testimonials from "@/components/testimonials"
-import GitHubActivity from "@/components/github-activity"
-import FeedbackForm from "@/components/feedback-form"
-import ResumeDownload from "@/components/resume-download"
-import BlogPreview from "@/components/blog-preview"
-import AwardsCertifications from "@/components/awards-certifications"
+import SkillsVisualization from "@/components/skills-visualization";
+import Testimonials from "@/components/testimonials";
+import GitHubActivity from "@/components/github-activity";
+import FeedbackForm from "@/components/feedback-form";
+import ResumeDownload from "@/components/resume-download";
+import BlogPreview from "@/components/blog-preview";
+import AwardsCertifications from "@/components/awards-certifications";
+
+const projects = [
+  {
+    id: 1,
+    title: "WanderLust",
+    description:
+      "A full-featured platform that replicates the core functionalities of Airbnb. It allows users to search for and manage rental properties.",
+    image: "/project/wanderlust.png?height=300&width=500",
+    category: "fullstack",
+    technologies: [
+      "EJS",
+      "Maptiler",
+      "Bootstrap",
+      "MongoDB",
+      "Express.js",
+      "Node.js",
+      "Passport.js",
+    ],
+    github: "https://github.com/tarush5253/major-project",
+    demo: "https://wanderlust-5lvq.onrender.com/listings",
+  },
+  {
+    id: 2,
+    title: "Attendance Management System",
+    description:
+      "A collaborative Attendance management application with real-time updates and team workspaces.",
+    image: "/project/AMS.png?height=300&width=500",
+    category: "fullstack",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express",
+      "Tailwind CSS",
+      "MUI",
+      "MongoDB",
+    ],
+    github: "https://github.com",
+    demo: "https://ams-frontend-gk3u.onrender.com/",
+  },
+  {
+    id: 10,
+    title: "Blogify",
+    description:
+      "A modern blog application, designed to deliver a beautiful reading/writing experience.",
+    image: "/project/blogify.jpeg?height=300&width=500",
+    category: "fullstack",
+    technologies: ["React", "TinyMCE", "AppWrite", "Tailwind CSS"],
+    github: "https://github.com/tarush5253/AppWrite_blogify",
+    demo: "https://app-write-blogify.vercel.app/",
+  },
+];
 
 export default function Home() {
   return (
@@ -56,7 +107,13 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
-                <TypewriterEffect texts={["Full Stack Developer", "UI/UX Enthusiast", "Problem Solver"]} />
+                <TypewriterEffect
+                  texts={[
+                    "Full Stack Developer",
+                    "UI/UX Enthusiast",
+                    "Problem Solver",
+                  ]}
+                />
               </motion.div>
 
               <motion.p
@@ -65,8 +122,9 @@ export default function Home() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
               >
-                I build exceptional digital experiences with modern technologies. Focused on creating elegant solutions
-                to complex problems.
+                I build exceptional digital experiences with modern
+                technologies. Focused on creating elegant solutions to complex
+                problems.
               </motion.p>
 
               <motion.div
@@ -161,7 +219,8 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              I've worked with a variety of technologies and frameworks to create exceptional digital experiences.
+              I've worked with a variety of technologies and frameworks to
+              create exceptional digital experiences.
             </p>
           </motion.div>
 
@@ -169,7 +228,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Section 
+      {/* Featured Projects Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -178,14 +237,17 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Featured Projects
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills and expertise.
+              Here are some of my recent projects that showcase my skills and
+              expertise.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((project, index) => (
+            {/* {[1, 2, 3].map((project, index) => (
               <motion.div
                 key={project}
                 initial={{ opacity: 0, y: 20 }}
@@ -219,6 +281,63 @@ export default function Home() {
                   </Link>
                 </div>
               </motion.div>
+            ))} */}
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-3">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition-colors"
+                    >
+                      <Github size={16} />
+                      <span className="text-sm">Code</span>
+                    </a>
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition-colors"
+                      >
+                        <ExternalLink size={16} />
+                        <span className="text-sm">Demo</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
 
@@ -231,7 +350,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>*/}
+      </section>
 
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
@@ -242,9 +361,12 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What People Say</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What People Say
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Feedback from clients and colleagues I've had the pleasure to work with.
+              Feedback from clients and colleagues I've had the pleasure to work
+              with.
             </p>
           </motion.div>
 
@@ -261,7 +383,9 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">GitHub Contributions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              GitHub Contributions
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               A snapshot of my coding activity and open source contributions.
             </p>
@@ -272,7 +396,7 @@ export default function Home() {
       </section>
 
       {/* Blog Preview Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -280,11 +404,40 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">From My Blog</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">I write about web development, design, and technology.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              From My Blog
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              I write about web development, design, and technology.
+            </p>
           </motion.div>
 
           <BlogPreview />
+        </div>
+      </section> */}
+
+       {/* Call to Action */}
+      <section className="py-20 bg-gray-900 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Start a Project?
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+              I'm currently available for freelance work and exciting
+              opportunities. Let's build something amazing together!
+            </p>
+            <Link
+              href="/contact"
+              className="px-8 py-4 bg-white text-gray-900 rounded-lg inline-flex items-center gap-2 hover:bg-gray-100 transition-colors text-lg font-medium"
+            >
+              Get in Touch <ArrowRight size={20} />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -297,9 +450,12 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Awards & Certifications</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Awards & Certifications
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Recognition and professional certifications I've earned throughout my career.
+              Recognition and professional certifications I've earned throughout
+              my career.
             </p>
           </motion.div>
 
@@ -320,7 +476,8 @@ export default function Home() {
               >
                 <h2 className="text-3xl font-bold mb-4">Download My Resume</h2>
                 <p className="text-gray-600">
-                  Get a comprehensive overview of my skills, experience, and qualifications.
+                  Get a comprehensive overview of my skills, experience, and
+                  qualifications.
                 </p>
               </motion.div>
 
@@ -335,7 +492,10 @@ export default function Home() {
                 className="mb-8 text-center md:text-left"
               >
                 <h2 className="text-3xl font-bold mb-4">Share Your Feedback</h2>
-                <p className="text-gray-600">I value your opinion! Let me know what you think about my portfolio.</p>
+                <p className="text-gray-600">
+                  I value your opinion! Let me know what you think about my
+                  portfolio.
+                </p>
               </motion.div>
 
               <FeedbackForm />
@@ -344,65 +504,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start a Project?</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto mb-8">
-              I'm currently available for freelance work and exciting opportunities. Let's build something amazing
-              together!
-            </p>
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-white text-gray-900 rounded-lg inline-flex items-center gap-2 hover:bg-gray-100 transition-colors text-lg font-medium"
-            >
-              Get in Touch <ArrowRight size={20} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+     
     </main>
-  )
+  );
 }
 
 // Typewriter effect component
 function TypewriterEffect({ texts }: { texts: string[] }) {
-  const [currentTextIndex, setCurrentTextIndex] = React.useState(0)
-  const [currentText, setCurrentText] = React.useState("")
-  const [isDeleting, setIsDeleting] = React.useState(false)
+  const [currentTextIndex, setCurrentTextIndex] = React.useState(0);
+  const [currentText, setCurrentText] = React.useState("");
+  const [isDeleting, setIsDeleting] = React.useState(false);
 
   React.useEffect(() => {
-    const text = texts[currentTextIndex]
+    const text = texts[currentTextIndex];
 
     const timeout = setTimeout(
       () => {
         if (!isDeleting) {
-          setCurrentText(text.substring(0, currentText.length + 1))
+          setCurrentText(text.substring(0, currentText.length + 1));
 
           if (currentText === text) {
-            setIsDeleting(true)
-            setTimeout(() => {}, 1500) // Pause at the end
+            setIsDeleting(true);
+            setTimeout(() => {}, 1500); // Pause at the end
           }
         } else {
-          setCurrentText(text.substring(0, currentText.length - 1))
+          setCurrentText(text.substring(0, currentText.length - 1));
 
           if (currentText === "") {
-            setIsDeleting(false)
-            setCurrentTextIndex((currentTextIndex + 1) % texts.length)
+            setIsDeleting(false);
+            setCurrentTextIndex((currentTextIndex + 1) % texts.length);
           }
         }
       },
-      isDeleting ? 50 : 100,
-    )
+      isDeleting ? 50 : 100
+    );
 
-    return () => clearTimeout(timeout)
-  }, [currentText, currentTextIndex, isDeleting, texts])
+    return () => clearTimeout(timeout);
+  }, [currentText, currentTextIndex, isDeleting, texts]);
 
   return (
     <span>
       {currentText}
       <span className="animate-pulse">|</span>
     </span>
-  )
+  );
 }
