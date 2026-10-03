@@ -96,7 +96,7 @@ export const profile = {
   available: "Open to full-time roles",
   siteUrl: "https://founder.freewaystudy.in",
   // Drop your resume PDF into /public and set this to "/Tarush_Ruhela_Resume.pdf" to show a Resume button.
-  resumeUrl: "",
+  resumeUrl: "/resume/Tarush_Full_Stack_Developer_CV.pdf",
   portrait: "/images/tarush-portrait.jpg",
   candid: "/images/tarush-sunset.jpg",
   socials: {
