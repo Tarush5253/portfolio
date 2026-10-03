@@ -1,21 +1,33 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { MotionProvider } from "@/components/site/motion"
 import { profile } from "@/lib/data"
 
-const sans = Inter_Tight({ subsets: ["latin"], variable: "--font-sans", display: "swap" })
-const serif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+// Fonts are bundled in app/fonts so builds never depend on downloading from Google Fonts.
+const sans = localFont({
+  src: "./fonts/inter-tight-normal.woff2",
+  weight: "100 900",
+  variable: "--font-sans",
+  display: "swap",
+})
+const serif = localFont({
+  src: [
+    { path: "./fonts/instrument-serif-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/instrument-serif-italic.woff2", weight: "400", style: "italic" },
+  ],
   variable: "--font-serif",
   display: "swap",
 })
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" })
+const mono = localFont({
+  src: "./fonts/jetbrains-mono-normal.woff2",
+  weight: "100 800",
+  variable: "--font-mono",
+  display: "swap",
+})
 
 const title = `${profile.name} · Full Stack & AI Developer`
 const description =
